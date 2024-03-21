@@ -1,0 +1,5 @@
+cím;rendező;evjarat
+Rambo1;ted kocheff;1999
+Jurassic park;Spielberg;1999
+Gyűrűk ura;Peter Jackson;2006
+buzera;én vagyok;2023
