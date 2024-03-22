@@ -1,5 +1,5 @@
 import requests
-
+import time
 def motor_aktualis(helyseg):
 
     url = f"http://api.weatherapi.com/v1/current.json?key=4c4de573ae45424aab3182243240703&q={helyseg}&aqi=no"
@@ -54,7 +54,7 @@ def motor_elorejelzes(helyseg):
     adatok = requests.get(url).json()
     if "forecast" in adatok and len(adatok) > 1 :
         # első nap
-        print(f'Dátum:{adatok["forecast"]["forecastday"][0]["date"]}')
+        print(f'\nDátum:{adatok["forecast"]["forecastday"][0]["date"]} - MA')
         print(f'Napkelte:{adatok["forecast"]["forecastday"][0]["astro"]["sunrise"]}')
         print(f'Napnyugta:{adatok["forecast"]["forecastday"][0]["astro"]["sunset"]}')
         print(f'Holdfázis:{adatok["forecast"]["forecastday"][0]["astro"]["moon_illumination"]} %')
@@ -66,7 +66,7 @@ def motor_elorejelzes(helyseg):
         print(f'Látótávolság:{adatok["forecast"]["forecastday"][0]["day"]["avgvis_km"]} km')
         print(f'Páratartalom:{adatok["forecast"]["forecastday"][0]["day"]["avghumidity"]} %\n')
         # második nap
-        print(f'Dátum:{adatok["forecast"]["forecastday"][1]["date"]}')
+        print(f'Dátum:{adatok["forecast"]["forecastday"][1]["date"]} - Holnap')
         print(f'Napkelte:{adatok["forecast"]["forecastday"][1]["astro"]["sunrise"]}')
         print(f'Napnyugta:{adatok["forecast"]["forecastday"][1]["astro"]["sunset"]}')
         print(f'Holdfázis:{adatok["forecast"]["forecastday"][1]["astro"]["moon_illumination"]} %')
@@ -78,7 +78,7 @@ def motor_elorejelzes(helyseg):
         print(f'Látótávolság:{adatok["forecast"]["forecastday"][1]["day"]["avgvis_km"]} km')
         print(f'Páratartalom:{adatok["forecast"]["forecastday"][1]["day"]["avghumidity"]} %\n')
         # harmadik nap
-        print(f'Dátum:{adatok["forecast"]["forecastday"][2]["date"]}')
+        print(f'Dátum:{adatok["forecast"]["forecastday"][2]["date"]} - Holnapután')
         print(f'Napkelte:{adatok["forecast"]["forecastday"][2]["astro"]["sunrise"]}')
         print(f'Napnyugta:{adatok["forecast"]["forecastday"][2]["astro"]["sunset"]}')
         print(f'Holdfázis:{adatok["forecast"]["forecastday"][2]["astro"]["moon_illumination"]} %')
@@ -97,6 +97,7 @@ def motor_elorejelzes(helyseg):
 
 
 def main():
+    lezaras = ["A","program","ezzel","bezárul","viszál"]
     while True:
         print("Üdvözöllek a készülő API- programomban jelenleg fejlesztés alatt áll...")
         print("Gingisoft.®")
@@ -107,14 +108,24 @@ def main():
 
         valasztas = input("-")
         if valasztas == "0":
+            for item in lezaras:
+                print(item,end=" ")
+                time.sleep(0.75)
             break
         if valasztas == "1":
             helyseg = input("Időjárás API töltése folyamatban kérem adja meg a helyet (ékezetek nélkül): ")
             motor_aktualis(helyseg)
+            for item in lezaras:
+                print(item,end=" ")
+                time.sleep(0.75)
+            break
         if valasztas == "2":
             helyseg = input("Időjárás API töltése folyamatban kérem adja meg a helyet (ékezetek nélkül): ")
             motor_elorejelzes(helyseg)
-
+            for item in lezaras:
+                print(item,end=" ")
+                time.sleep(0.75)
+            break
 if __name__ == '__main__':
     main()
 
