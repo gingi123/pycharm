@@ -19,10 +19,10 @@ import time
 #for i in "Krisztian toth":
 #    print(i)
 
-#for seconds in range(10,0,-1):
-##    print(seconds)
- #   time.sleep(0.5)
-#print("happy new year")
+for seconds in range(10,0,-1):
+    print(seconds)
+    time.sleep(0.5)
+print("happy new year")
 
 #friends = ["rolf","jen","anna"]
 

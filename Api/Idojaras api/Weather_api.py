@@ -1,10 +1,13 @@
 import requests
 import time
+
 def motor_aktualis(helyseg):
+
 
     url = f"http://api.weatherapi.com/v1/current.json?key=4c4de573ae45424aab3182243240703&q={helyseg}&aqi=no"
 
     adatok = requests.get(url).json()
+    statusz = requests.get(url).status_code   #vagy lehetne  = adatok.status_code
     a_szel_iranya_leforditva = adatok['current']['wind_dir']
     if 'location' in adatok and len(adatok['location']) > 0:
         print(f"\nHelység: {adatok['location']['name']}")
@@ -18,6 +21,7 @@ def motor_aktualis(helyseg):
         print(f"Csapadék: {adatok['current']['condition']['text']} .")
         print(f"Szél: {adatok['current']['wind_kph']} km/h.")
         print(f"Szél-iránya: {adatok['current']['wind_degree']} Fok.")
+
 
         # for key, value in Wind_dir_dict.items():
         #     if adatok['current']['wind_dir'] == key:
@@ -42,16 +46,17 @@ def motor_aktualis(helyseg):
         print(f"Légnyomás: {adatok['current']['pressure_mb']} Pa.")
         print(f"Páratartalom: {adatok['current']['humidity']} %.")
         print(f"Hány % ban felhős?: {adatok['current']['cloud']} %.")
-        print("\nGingisoft.®")
+        print("\nEz a státusz kódja", statusz)
 
     else:
         print("Valami hiba történt nincs adat.....")
-        print("\nGingisoft.®")
+        print("\nEz a státusz kódja", statusz)
 
 
 def motor_elorejelzes(helyseg):
     url = f"http://api.weatherapi.com/v1/forecast.json?key=4c4de573ae45424aab3182243240703&q={helyseg}&days=3&aqi=no&alerts=no"
     adatok = requests.get(url).json()
+    statusz = requests.get(url).status_code
     if "forecast" in adatok and len(adatok) > 1 :
         # első nap
         print(f'\nDátum:{adatok["forecast"]["forecastday"][0]["date"]} - MA')
@@ -89,18 +94,18 @@ def motor_elorejelzes(helyseg):
         print(f'Hó valószínűsége:{adatok["forecast"]["forecastday"][2]["day"]["daily_chance_of_snow"]} %')
         print(f'Látótávolság:{adatok["forecast"]["forecastday"][2]["day"]["avgvis_km"]} km')
         print(f'Páratartalom:{adatok["forecast"]["forecastday"][2]["day"]["avghumidity"]} %\n')
-
+        print("\nEz a státusz kódja", statusz)
     else:
         print("Valami hiba történt nincs adat.....")
-        print("\nGingisoft.®")
+        print("\nEz a státusz kódja", statusz)
 
 
 
 def main():
-    lezaras = ["A","program","ezzel","bezárul","viszál"]
+    lezaras = ["A","program","ezzel","bezárul","viszlát"]
     while True:
         print("Üdvözöllek a készülő API- programomban jelenleg fejlesztés alatt áll...")
-        print("Gingisoft.®")
+
         print("Válasszon menüpontot! ")
         print("Válassza 1. -est ha jelenlegi időjárást szeretné látni")
         print("Válassza 2. -est ha előrejelzést szeretné látni")
