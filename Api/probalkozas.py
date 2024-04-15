@@ -38,7 +38,7 @@ for key,value in Wind_dir_dict.items():
 
 
 
-
+#tulajdonkpekken ide barmit irhatnek
 
 
 
