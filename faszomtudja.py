@@ -110,5 +110,38 @@ for i in range(0, len(pizza_and_prices)):
 
 sorted_menu = sorted(menu, key=lambda x: x['AR'])#,reverse=True)
 
-print(menu)
-print(sorted_menu)
+#print(menu)
+#print(sorted_menu)
+
+
+
+#newlist = [x for x in range(11)]
+#newlist = [x for x in range(10) if x <= 5]
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+newlist = [x for x in fruits if "a" not in x]
+
+print(newlist)
+
+
+print(newlist)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
