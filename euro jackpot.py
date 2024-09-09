@@ -22,3 +22,5 @@ for item in azen_szamaim:
     passzoloszamok = len(item["számok"].intersection(lotto_nyeroszamok))
     print(f"{item['neve']} eltalált  számot {passzoloszamok}")
     #print(passzoloszamok)
+
+
